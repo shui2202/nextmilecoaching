@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Next Mile Coaching</title>
     <meta name="description" content="Professional running coaching for 5K, 10K, half marathon, and marathon training. Founded by elite high school athletes with proven results.">
     
@@ -49,10 +49,7 @@
             <div class="hero-text">
                 <h1 class="hero-title">Transform Your Running Journey</h1>
                 <p class="hero-subtitle">Professional coaching from elite high school athletes who understand what it takes to achieve your distance running goals. <br><br> Based out of Sammamish, Washington, we provide professional distance running coaching by elite high school athletes. Transform your running journey with proven training methods.<br><br>Our philosophy? Analyze every runner to find the piece that fits their puzzle through personalized training. We believe that long term consistency is what brings about success so this is our goal to give each and every runner.</p>
-                <div class="hero-buttons">
-                    <a href="#packages" class="btn btn-primary">View Training Packages</a>
-                    <a href="#contact" class="btn btn-secondary">Start Today</a>
-                </div>
+                
             </div>
             <div class="hero-image">
                 
@@ -61,29 +58,36 @@
                 
                 
             <section class="slider_container">
-                <section class="slider">
-                    <div class="slide one">
-                        <img src="tokyo-modified.png" alt="" />
-   
+                <section class="slider" id="slider">
+                    <div class="slide one active">
+                        <img src="tokyo-modified.png" alt="Tokyo Marathon" />
                     </div>
                     <div class="slide two">
-                        <img src="sea-modified.png" alt="" />
-                 
+                        <img src="sea-modified.png" alt="Seattle Marathon" />
                     </div>
                     <div class="slide three">
-                        <img src="ny-modified.png" alt="" />
-        
+                        <img src="ny-modified.png" alt="New York Marathon" />
                     </div>
                     <div class="slide four">
-                        <img src="chi-modified.png" alt="" />
-        
+                        <img src="chi-modified.png" alt="Chicago Marathon" />
                     </div>
-                    <div class="slide five">
-                        <img src="tokyo-modified.png" alt="" />
-        
-                    </div>
-
                 </section>
+                
+                <!-- Navigation Controls -->
+                <button class="slider-nav prev" onclick="changeSlide(-1)">
+                    <i data-feather="chevron-left"></i>
+                </button>
+                <button class="slider-nav next" onclick="changeSlide(1)">
+                    <i data-feather="chevron-right"></i>
+                </button>
+                
+                <!-- Dots Navigation -->
+                <div class="slider-dots">
+                    <span class="slider-dot active" onclick="currentSlide(1)"></span>
+                    <span class="slider-dot" onclick="currentSlide(2)"></span>
+                    <span class="slider-dot" onclick="currentSlide(3)"></span>
+                    <span class="slider-dot" onclick="currentSlide(4)"></span>
+                </div>
             </section>
 
 
