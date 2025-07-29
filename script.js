@@ -236,7 +236,7 @@ function initFormHandling() {
     const contactForm = document.getElementById('contact-form');
 
     if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmission);
+
 
         // Real-time validation
         const inputs = contactForm.querySelectorAll('input, select, textarea');
@@ -260,26 +260,8 @@ function handleFormSubmission(e) {
         return;
     }
 
-    // Show loading state
-    submitBtn.disabled = true;
-    if (btnText) btnText.style.display = 'none';
-    if (btnLoading) btnLoading.style.display = 'flex';
 
-    // Simulate form submission (replace with actual endpoint)
-    setTimeout(() => {
-        showSuccessModal();
-        form.reset();
 
-        // Reset button state
-        submitBtn.disabled = false;
-        if (btnText) btnText.style.display = 'block';
-        if (btnLoading) btnLoading.style.display = 'none';
-
-        trackEvent('form_submission', {
-            form_type: 'contact',
-            timestamp: new Date().toISOString()
-        });
-    }, 2000);
 }
 
 function validateForm(form) {
@@ -420,129 +402,51 @@ function initAnimations() {
     animatedElements.forEach(element => {
         observer.observe(element);
     });
-
-    // Add animation styles
-    if (!document.querySelector('.animation-styles')) {
-        const style = document.createElement('style');
-        style.className = 'animation-styles';
-        style.textContent = `
-            .coach-card,
-            .package-card,
-            .step-card,
-            .hero-stats,
-            .section-header {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: all 0.6s ease-out;
-            }
-
-            .animate-in {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            .coach-card.animate-in {
-                transition-delay: 0.2s;
-            }
-
-            .package-card.animate-in {
-                transition-delay: 0.15s;
-            }
-
-            .step-card.animate-in {
-                transition-delay: 0.3s;
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-                .coach-card,
-                .package-card,
-                .step-card,
-                .hero-stats,
-                .section-header {
-                    opacity: 1;
-                    transform: none;
-                    transition: none;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    }
 }
 
-// Package button handlers
+// Package button functionality
 function initPackageButtons() {
-    const packageButtons = document.querySelectorAll('.package-btn');
-
+    const packageButtons = document.querySelectorAll('.package-card .btn');
+    
     packageButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(e) {
+            // Track package selection
             const packageCard = this.closest('.package-card');
             const packageName = packageCard.querySelector('.package-name').textContent;
-
-            // Scroll to contact form and pre-fill package info
-            const contactSection = document.getElementById('contact');
-            const messageField = document.getElementById('message');
-
-            if (contactSection && messageField) {
-                // Pre-fill message with package interest
-                const currentMessage = messageField.value;
-                const packageMessage = `I'm interested in the ${packageName} package.`;
-
-                if (!currentMessage.includes(packageMessage)) {
-                    messageField.value = currentMessage 
-                        ? `${currentMessage}\n\n${packageMessage}` 
-                        : packageMessage;
-                }
-
-                // Scroll to contact form
-                contactSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-
-                // Focus on form after scroll
-                setTimeout(() => {
-                    const nameField = document.getElementById('name');
-                    if (nameField) nameField.focus();
-                }, 1000);
-
-                trackEvent('package_interest', {
-                    package: packageName,
-                    timestamp: new Date().toISOString()
-                });
-            }
+            
+            trackEvent('package_selected', {
+                package: packageName,
+                timestamp: new Date().toISOString()
+            });
         });
     });
 }
 
-// Navbar scroll effect
+// Navbar scroll initialization
 function initNavbarScroll() {
     const navbar = document.getElementById('navbar');
-
-    window.addEventListener('scroll', throttle(() => {
-        if (navbar) {
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
+    
+    if (navbar) {
+        // Add initial class if page is already scrolled on load
+        if (window.scrollY > 100) {
+            navbar.classList.add('scrolled');
         }
-    }, 16));
-}
-
-function showSuccessModal() {
-    const modal = document.getElementById('success-modal');
-    if (modal) {
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
     }
 }
 
-function closeModal() {
-    const modal = document.getElementById('success-modal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
+// Success modal functionality
+
+
+// Event tracking utility
+function trackEvent(eventName, properties = {}) {
+    // This is a placeholder for analytics tracking
+    // In a real application, you would integrate with your analytics service
+    console.log(`Event tracked: ${eventName}`, properties);
+    
+    // Example integration points:
+    // - Google Analytics
+    // - Mixpanel
+    // - Custom analytics endpoint
 }
 
 // Utility functions
@@ -558,62 +462,57 @@ function debounce(func, wait) {
     };
 }
 
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
+// Performance optimization for scroll events
+const debouncedScrollHandler = debounce(function() {
+    // Any additional scroll handling can go here
+}, 10);
+
+window.addEventListener('scroll', debouncedScrollHandler);
+
+// Handle window resize for responsive adjustments
+function handleResize() {
+    // Close mobile menu on resize to desktop
+    if (window.innerWidth > 768) {
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (navToggle && navMenu) {
+            navToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
         }
-    };
+    }
 }
 
-// Analytics and tracking (placeholder)
-function trackEvent(eventName, eventData) {
-    // In production, integrate with your analytics platform
-    console.log('Event tracked:', eventName, eventData);
-}
+const debouncedResizeHandler = debounce(handleResize, 250);
+window.addEventListener('resize', debouncedResizeHandler);
 
-// Error handling
-window.addEventListener('error', function(e) {
-    console.error('JavaScript error:', e.error);
-});
-
-// Handle unhandled promise rejections
-window.addEventListener('unhandledrejection', function(e) {
-    console.error('Unhandled promise rejection:', e.reason);
-});
-
-// Keyboard navigation improvements
-document.addEventListener('keydown', function(e) {
-    // Skip to main content with keyboard
-    if (e.key === 'Tab' && e.target === document.body) {
-        const firstFocusable = document.querySelector('a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])');
-        if (firstFocusable) {
-            firstFocusable.focus();
+// Handle page visibility changes
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        // Page is hidden - pause any animations or timers if needed
+    } else {
+        // Page is visible - resume animations or timers if needed
+        if (typeof feather !== 'undefined') {
+            feather.replace();
         }
     }
 });
 
-// Add screen reader only styles
-if (!document.querySelector('.sr-only-styles')) {
-    const style = document.createElement('style');
-    style.className = 'sr-only-styles';
-    style.textContent = `
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-    `;
-    document.head.appendChild(style);
+// Initialize tooltips and other interactive elements
+function initInteractiveElements() {
+    // Add loading states to buttons
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Add visual feedback for button clicks
+            this.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
 }
+
+// Call initialization on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', initInteractiveElements);
