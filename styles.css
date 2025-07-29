@@ -81,6 +81,33 @@ body {
     margin: 0 auto;
     padding: var(--container-padding);
     text-align: center;
+    width: 100%;
+}
+
+/* Flexible grid system */
+@media (min-width: 1200px) {
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .packages-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .team-grid,
+    .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Reset text alignment for specific content that shouldn't be centered */
@@ -322,87 +349,94 @@ p {
   overflow: hidden;
   border-radius: 25px;
 }
+
+/* Slideshow Navigation */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+}
+
+.slider-nav:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.slider-nav.prev {
+  left: 20px;
+}
+
+.slider-nav.next {
+  right: 20px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+  background: var(--primary-color);
+  transform: scale(1.2);
+}
 .slider {
   position: relative;
-  width: 400%;
+  width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  animation: 33s cubic-bezier(1, 0.95, 0.565, 1) sliding infinite;
   border-radius: 25px;
-
-
+  transition: transform 0.5s ease-in-out;
 }
+
 .slide {
-  position: relative;
-  min-width: 100%;
+  position: absolute;
+  width: 100%;
   height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 25px;
+  overflow: hidden;
 }
+
+.slide.active {
+  opacity: 1;
+}
+
 .slide img {
   width: 100%;
   height: 100%;
-}
-.slide .caption {
-  position: absolute;
-  left: 0;
-  bottom: 5%;
-  font-size: 5rem;
-  font-weight: 600;
-  color: white;
-  text-transform: capitalize;
-  background: rgba(0, 0, 0, 0.348);
-  backdrop-filter: blur(10px);
-  padding: 1rem 5rem;
-  border-radius: 0 2rem 2rem 0;
-}
-
-.slide.one {
+  object-fit: cover;
   border-radius: 25px;
-}
-.slide.two {
-  border-radius: 25px;
-}
-.slide.three {
-  border-radius: 25px;
-}
-.slide.four {
-  border-radius: 25px;
-}
-.slide.five {
-  border-radius: 25px;
-}
-
-@keyframes sliding {
-  0% {
-    transform: translateX(0%);
-  }
-  20% {
-    transform: translateX(0%);
-  }
-  25% {
-    transform: translateX(-100%);
-  }
-  45% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(-200%);
-  }
-  70% {
-    transform: translateX(-200%);
-  }
-  75% {
-    transform: translateX(-300%);
-  }
-  90% {
-    transform: translateX(-300%);
-  }
-
-  100% {
-    transform: translateX(-400%);
-  }
 }
 
 
@@ -470,8 +504,9 @@ section {
 /* Team Section */
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-items: center;
 }
 
 .coach-card {
@@ -496,11 +531,11 @@ section {
 }
 
 .coach-photo {
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid var(--primary);
+    border: 3px solid var(--primary-color);
     box-shadow: var(--shadow-lg);
     margin: 0 auto;
     display: block;
@@ -568,10 +603,11 @@ section {
 
 .packages-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
+    justify-items: center;
 }
 
 .package-card {
@@ -732,10 +768,11 @@ section {
 
 .process-steps {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     max-width: 900px;
     margin: 0 auto;
+    justify-items: center;
 }
 
 .step-card {
@@ -1074,67 +1111,39 @@ section {
     background-color: var(--primary-dark);
 }
 
-/* Medium screens - maintain 2x2 grid */
-@media (max-width: 768px) {
-    .process-steps {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    
-    .step-card {
-        padding: 1.5rem;
-    }
-    
-    .contact-content {
-        padding: 0 1rem;
-    }
-    
-    .contact-form {
-        padding: 2rem;
-    }
-}
-
-/* Small screens - single column */
-@media (max-width: 480px) {
-    .process-steps {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-}
-
-/* Responsive Design */
+/* Proportional scaling for all devices - maintains exact desktop layout */
 @media (max-width: 1024px) {
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
+    html {
+        font-size: 14px; /* Scale down base font size */
     }
     
-    .hero-image {
-        order: -1;
+    .container {
+        zoom: 0.9; /* Scale down entire container */
     }
     
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-    }
-    
-    .process-steps {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .step-card {
-        padding: 2rem;
+    .slider_container {
+        height: 36rem; /* Proportionally scale slider height */
     }
 }
 
 @media (max-width: 768px) {
+    html {
+        font-size: 12px; /* Further scale down font size */
+    }
+    
+    .container {
+        zoom: 0.75; /* Scale down more for tablets */
+    }
+    
+    .slider_container {
+        height: 30rem; /* Proportionally scale slider height */
+    }
+    
+    /* Navigation mobile toggle - only structural change needed */
+    .nav-toggle {
+        display: flex;
+    }
+    
     .nav-menu {
         position: fixed;
         top: 100%;
@@ -1148,16 +1157,13 @@ section {
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
+        z-index: 1001;
     }
     
     .nav-menu.active {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
-    }
-    
-    .nav-toggle {
-        display: flex;
     }
     
     .nav-toggle.active .bar:nth-child(1) {
@@ -1171,58 +1177,58 @@ section {
     .nav-toggle.active .bar:nth-child(3) {
         transform: rotate(-45deg) translate(6px, -6px);
     }
-    
-    .hero-buttons {
-        justify-content: center;
-    }
-    
+}
 
-    
-    .programs-grid,
-    .team-grid,
-    .packages-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 600px) {
+    html {
+        font-size: 11px; /* Scale down font size for phones */
     }
     
-    .pr-grid {
-        grid-template-columns: 1fr;
+    .container {
+        zoom: 0.65; /* Scale down significantly for phones */
     }
     
-    .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    
-    .modal-content {
-        width: 95%;
-        padding: 1.5rem;
+    .slider_container {
+        height: 26rem; /* Proportionally scale slider height */
     }
 }
 
 @media (max-width: 480px) {
-    :root {
-        --section-padding: 3rem 0;
-        --container-padding: 0 0.75rem;
+    html {
+        font-size: 10px; /* Further scale down for small phones */
     }
     
-    .hero-buttons {
-        flex-direction: column;
-        align-items: center;
+    .container {
+        zoom: 0.55; /* Scale down more for small phones */
     }
     
-    .btn {
-        width: 100%;
-        max-width: 300px;
+    .slider_container {
+        height: 22rem; /* Proportionally scale slider height */
+    }
+}
+
+@media (max-width: 360px) {
+    html {
+        font-size: 9px; /* Scale down for very small phones */
     }
     
-    .program-card,
-    .coach-card,
-    .package-card {
-        padding: 1.5rem;
+    .container {
+        zoom: 0.5; /* Scale down significantly for very small phones */
     }
     
-    .contact-form {
-        padding: 1.5rem;
+    .slider_container {
+        height: 20rem; /* Proportionally scale slider height */
+    }
+}
+
+/* Landscape phone orientation */
+@media (max-width: 767px) and (orientation: landscape) {
+    .container {
+        zoom: 0.7; /* Adjust scaling for landscape */
+    }
+    
+    .slider_container {
+        height: 24rem;
     }
 }
 
