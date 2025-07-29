@@ -68,6 +68,11 @@ function showSlide(index) {
 // Auto-advance slideshow
 function autoSlide() {
     currentSlideIndex++;
+    
+    if (currentSlideIndex >= slides.length) {
+        currentSlideIndex = 0;
+    }
+    
     showSlide(currentSlideIndex);
 }
 
