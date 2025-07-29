@@ -552,13 +552,13 @@ section {
 /* Make Yashas and Daniel's cards wider on mobile */
 .team-grid .coach-card:nth-child(1),
 .team-grid .coach-card:nth-child(2) {
-    max-width: 280px;
+    max-width: 350px;
 }
 
 /* Make Finn's card wider to accommodate longer text */
 .team-grid .coach-card:nth-child(3) {
     grid-column: 1 / -1;
-    max-width: 320px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
