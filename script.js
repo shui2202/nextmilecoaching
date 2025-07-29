@@ -86,7 +86,7 @@ function initButtonHandlers() {
             const packagesSection = document.getElementById('packages');
             if (packagesSection) {
                 packagesSection.scrollIntoView({ 
-                    behavior: 'smooth',
+                    behavior: 'auto',
                     block: 'start'
                 });
             }
@@ -101,7 +101,7 @@ function initButtonHandlers() {
             const contactSection = document.getElementById('contact');
             if (contactSection) {
                 contactSection.scrollIntoView({ 
-                    behavior: 'smooth',
+                    behavior: 'auto',
                     block: 'start'
                 });
 
@@ -224,7 +224,7 @@ function initSmoothScrolling() {
 
                 window.scrollTo({
                     top: offsetTop,
-                    behavior: 'smooth'
+                    behavior: 'auto'
                 });
             }
         });
