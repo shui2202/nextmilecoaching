@@ -1,579 +1,1393 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Next Mile Coaching</title>
-    <meta name="description" content="Professional running coaching for 5K, 10K, half marathon, and marathon training. Founded by elite high school athletes with proven results.">
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Primary Colors */
+    --primary-color: #ff6b35;
+    --primary-light: #ff8a65;
+    --primary-dark: #e55722;
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    /* Secondary Colors */
+    --secondary-color: #2563eb;
+    --secondary-light: #60a5fa;
+    --secondary-dark: #1d4ed8;
     
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.css">
+    /* Neutral Colors */
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
     
-    <!-- Styles -->
-    <link rel="stylesheet" href="styles.css">
+    /* Text Colors */
+    --text-primary: var(--gray-900);
+    --text-secondary: var(--gray-600);
+    --text-light: var(--gray-500);
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpg" href="next.png">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="next.png" alt="Next Mile Coaching" class="logo">
-                <span class="logo-text">Next Mile Coaching</span>
-            </div>
-            
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#team" class="nav-link">Our Team</a>
-                <a href="#packages" class="nav-link">Training Packages</a>
-                <a href="#how-it-works" class="nav-link">How It Works</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            
-            <div class="nav-toggle" id="nav-toggle">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: var(--gray-50);
+    --bg-dark: var(--gray-900);
+    
+    /* Success/Error Colors */
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --warning-color: #f59e0b;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
+    /* Borders */
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+    
+    /* Spacing */
+    --section-padding: 5rem 0;
+    --container-padding: 0 1rem;
+    
+    /* Typography */
+    --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Transform Your Running Journey</h1>
-                <p class="hero-subtitle">Professional coaching from elite high school athletes who understand what it takes to achieve your distance running goals. <br><br> Based out of Sammamish, Washington, we provide professional distance running coaching by elite high school athletes. Transform your running journey with proven training methods.<br><br>Our philosophy? Analyze every runner to find the piece that fits their puzzle through personalized training. We believe that long term consistency is what brings about success so this is our goal to give each and every runner.</p>
-                
-            </div>
-            <div class="hero-image">
-                
-                
-                
-                
-                
-            <section class="slider_container">
-                <section class="slider" id="slider">
-                    <div class="slide one active">
-                        <img src="tokyo-modified.png" alt="Tokyo Marathon" />
-                    </div>
-                    <div class="slide two">
-                        <img src="sea-modified.png" alt="Seattle Marathon" />
-                    </div>
-                    <div class="slide three">
-                        <img src="ny-modified.png" alt="New York Marathon" />
-                    </div>
-                    <div class="slide four">
-                        <img src="chi-modified.png" alt="Chicago Marathon" />
-                    </div>
-                </section>
-                
-                <!-- Navigation Controls -->
-                <button class="slider-nav prev" onclick="changeSlide(-1)">
-                    <i data-feather="chevron-left"></i>
-                </button>
-                <button class="slider-nav next" onclick="changeSlide(1)">
-                    <i data-feather="chevron-right"></i>
-                </button>
-                
-                <!-- Dots Navigation -->
-                <div class="slider-dots">
-                    <span class="slider-dot active" onclick="currentSlide(1)"></span>
-                    <span class="slider-dot" onclick="currentSlide(2)"></span>
-                    <span class="slider-dot" onclick="currentSlide(3)"></span>
-                    <span class="slider-dot" onclick="currentSlide(4)"></span>
-                </div>
-            </section>
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+    text-align: center;
+    width: 100%;
+}
+
+/* Flexible grid system */
+@media (min-width: 1200px) {
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .packages-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .team-grid,
+    .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Reset text alignment for specific content that shouldn't be centered */
+.nav-container,
+.coach-info,
+.footer-content {
+    text-align: left;
+}
+
+.hero-text {
+    text-align: left;
+}
+
+.contact-info {
+    text-align: center;
+}
+
+.section-header {
+    text-align: center;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 1rem;
+    min-height: 48px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--gray-200);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-text {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--container-padding);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.hero-title {
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: left;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    text-align: left;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    width: 100%;
+}
+
+/* Mobile responsive layout */
+@media (max-width: 768px) {
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .hero-text {
+        max-width: 100%;
+        text-align: center;
+    }
+    
+    .hero-title {
+        text-align: center;
+    }
+    
+    .hero-subtitle {
+        text-align: center;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .hero-image {
+        width: 100%;
+    }
+}
+
+.slider_container {
+  position: relative;
+  width: 90%;
+  height: 40rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+/* Slideshow Navigation */
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+}
+
+.slider-nav:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: var(--shadow-lg);
+}
+
+.slider-nav.prev {
+  left: 20px;
+}
+
+.slider-nav.next {
+  right: 20px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+  background: var(--primary-color);
+  transform: scale(1.2);
+}
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+}
 
 
-                
-            
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-running-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+
+
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 25% 25%, var(--primary-color) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, var(--secondary-color) 0%, transparent 50%);
+    opacity: 0.05;
+}
+
+/* Section Styles */
+section {
+    padding: var(--section-padding);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+
+
+/* Team Section */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.team-grid .coach-card:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .team-grid .coach-card:nth-child(3) {
+        grid-column: 3 / 4;
+        max-width: none;
+    }
+}
+
+.coach-card {
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 1px solid var(--gray-200);
+    text-align: center;
+    margin: 0 auto;
+}
+
+.coach-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.coach-avatar {
+    padding: 2rem 2rem 0;
+    text-align: center;
+}
+
+.coach-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--shadow-lg);
+    margin: 0 auto;
+    display: block;
+}
+
+.coach-info {
+    padding: 1.5rem 2rem 2rem;
+}
+
+.coach-name {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.coach-title {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.coach-bio {
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.coach-prs h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.pr-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.pr-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: var(--gray-50);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--gray-200);
+}
+
+.pr-distance {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+}
+
+.pr-time {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 0.875rem;
+}
+
+/* Packages Section */
+.packages {
+    background-color: var(--bg-secondary);
+}
+
+.packages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-items: center;
+}
+
+.packages-grid .package-card:nth-child(3) {
+    grid-column: 1 / -1;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .packages-grid .package-card:nth-child(3) {
+        grid-column: 3 / 4;
+        max-width: none;
+    }
+}
+
+.package-card {
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    border: 2px solid var(--gray-200);
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.package-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.package-card.featured {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.package-card.featured:hover {
+    transform: scale(1.05) translateY(-4px);
+}
+
+.package-badge {
+    position: absolute;
+    top: -1px;
+    right: 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.package-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.package-name {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.package-price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.period {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.package-features ul {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+.package-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    color: var(--text-secondary);
+}
+
+.package-features i {
+    color: var(--success-color);
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.package-distances {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.distance-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.distance-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.distance-tag {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: white;
+    padding: 0.375rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.package-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.package-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.featured .package-btn {
+    background-color: var(--secondary-color);
+}
+
+.featured .package-btn:hover {
+    background-color: var(--secondary-dark);
+}
+
+/* How It Works Section */
+.how-it-works {
+    background-color: var(--bg-primary);
+    background-image: url("london.jpg");
+    background-repeat: no-repeat;
+    background-position: center 260px;
+    background-size: cover;
+}
+
+@media (max-width: 1024px) {
+    .how-it-works {
+        background-position: center 234px; /* Proportionally adjusted for zoom 0.9 */
+    }
+}
+
+@media (max-width: 768px) {
+    .how-it-works {
+        background-position: center 195px; /* Proportionally adjusted for zoom 0.75 */
+    }
+}
+
+@media (max-width: 600px) {
+    .how-it-works {
+        background-position: center 169px; /* Proportionally adjusted for zoom 0.65 */
+    }
+}
+
+@media (max-width: 480px) {
+    .how-it-works {
+        background-position: center 143px; /* Proportionally adjusted for zoom 0.55 */
+    }
+}
+
+@media (max-width: 360px) {
+    .how-it-works {
+        background-position: center 130px; /* Proportionally adjusted for zoom 0.5 */
+    }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+    .how-it-works {
+        background-position: center 182px; /* Adjusted for landscape zoom 0.7 */
+    }
+}
 
 
 
 
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    justify-items: center;
+}
 
+.step-card {
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--gray-200);
+    position: relative;
+    transition: all 0.3s ease;
+    text-align: center;
+    margin: 0 auto;
+}
 
+.step-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
 
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    box-shadow: var(--shadow-md);
+}
 
-        
-        </div>
-        <div class="hero-background">
-            <div class="hero-pattern"></div>
-        </div>
-    </section>
+.step-content {
+    padding-top: 1rem;
+}
 
+.step-icon {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    opacity: 0.9;
+}
 
+.step-icon i {
+    color: white;
+    width: 32px;
+    height: 32px;
+}
 
-    <!-- Team Section -->
-    <section id="team" class="team">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Meet Our Elite Coaches</h2>
-                <p class="section-subtitle">High school athletes turned professional coaches with proven track records</p>
-            </div>
-            
-            <div class="team-grid">
-                <div class="coach-card">
-                    <img src="yash.jpg" alt="Yashas Vanagundi" class="coach-photo">
-                    <div class="coach-avatar">
-                        <div class="avatar-placeholder">
-                            <i data-feather="user"></i>
-                        </div>
-                    </div>
-                    <div class="coach-info">
-                        <h3 class="coach-name">Yashas Vanagundi</h3>
-                        <p class="coach-title">Coach</p>
-                        <p class="coach-bio">Fourth all time fastest freshman at Skyline HS for the 800m.</p>
-                        <div class="coach-prs">
-                            <h4>Personal Bests:</h4>
-                            <div class="pr-grid">
-                                <div class="pr-item">
-                                    <span class="pr-distance">Half Marathon</span>
-                                    <span class="pr-time">1:26</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">5K</span>
-                                    <span class="pr-time">17:02</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">3200m</span>
-                                    <span class="pr-time">10:38</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">1600m</span>
-                                    <span class="pr-time">4:45</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">800m</span>
-                                    <span class="pr-time">2:07</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="coach-card">
-                    <img src="dan.jpg" alt="Daniel He" class="coach-photo">
-                    <div class="coach-avatar">
-                        <div class="avatar-placeholder">
-                            <i data-feather="user"></i>
-                        </div>
-                    </div>
-                    <div class="coach-info">
-                        <h3 class="coach-name">Daniel He</h3>
-                        <p class="coach-title">Coach</p>
-                        <p class="coach-bio">Gone from 8:30 mile to 4:35 mile in two and a half years. Third fastest freshman for Skyline HS in the 2 mile</p>
-                        <div class="coach-prs">
-                            <h4>Personal Bests:</h4>
-                            <div class="pr-grid">
-                                <div class="pr-item">
-                                    <span class="pr-distance">5K</span>
-                                    <span class="pr-time">17:16</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">3200m</span>
-                                    <span class="pr-time">9:50</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">1600m</span>
-                                    <span class="pr-time">4:35</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">800m</span>
-                                    <span class="pr-time">2:09</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="coach-card">
-                    <img src="finn.jpg" alt="Finn" class="coach-photo">
-                    <div class="coach-avatar">
-                        <div class="avatar-placeholder">
-                            <i data-feather="user"></i>
-                        </div>
-                    </div>
-                    <div class="coach-info">
-                        <h3 class="coach-name">Finn</h3>
-                        <p class="coach-title">Coach</p>
-                        <p class="coach-bio">Has excelled and showed elite performances ranging from the half marathon all the way to the 800m</p>
-                        <div class="coach-prs">
-                            <h4>Personal Bests:</h4>
-                            <div class="pr-grid">
-                                <div class="pr-item">
-                                    <span class="pr-distance">Half Marathon</span>
-                                    <span class="pr-time">1:26</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">5K</span>
-                                    <span class="pr-time">17:50</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">3200m</span>
-                                    <span class="pr-time">11:06</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">1600m</span>
-                                    <span class="pr-time">4:47</span>
-                                </div>
-                                <div class="pr-item">
-                                    <span class="pr-distance">800m</span>
-                                    <span class="pr-time">2:10</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+.step-title {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.375rem;
+}
 
-    <!-- Training Packages Section -->
-    <section id="packages" class="packages">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Training Packages</h2>
-                <p class="section-subtitle">Choose your training level and distance goal</p>
-            </div>
-            
-            <div class="packages-grid">
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-name">Beginner</h3>
-                        <div class="package-price">
-                            <span class="price">$0</span>
-                            <span class="period">/month</span>
-                        </div>
-                    </div>
-                    <div class="package-distances">
-                        <p class="distance-label">Available for:</p>
-                        <div class="distance-tags">
-                            <span class="distance-tag">5K</span>
-                            <span class="distance-tag">10K</span>
-                            <span class="distance-tag">Half Marathon</span>
-                            <span class="distance-tag">Marathon</span>
-                        </div>
-                    </div>
-                    <div class="package-features">
-                        <ul>
-                            <li><i data-feather="check"></i> Couch-to-distance training plans</li>
-                            <li><i data-feather="check"></i> Basic strength training</li>
-                            <li><i data-feather="check"></i> Video calls</li>
-                            <li><i data-feather="check"></i> Long term development</li>
-                            <li><i data-feather="check"></i> Injury prevention focus</li>
-                            <li><i data-feather="check"></i> For newer athletes to the sport</li>
-                        </ul>
-                    </div>
-                    <button class="package-btn">Get Started</button>
-                </div>
-                
-                <div class="package-card featured">
-            
-                    <div class="package-header">
-                        <h3 class="package-name">Intermediate</h3>
-                        <div class="package-price">
-                            <span class="price">$0</span>
-                            <span class="period">/month</span>
-                        </div>
-                    </div>
-                    <div class="package-distances">
-                        <p class="distance-label">Available for:</p>
-                        <div class="distance-tags">
-                            <span class="distance-tag">5K</span>
-                            <span class="distance-tag">10K</span>
-                            <span class="distance-tag">Half Marathon</span>
-                            <span class="distance-tag">Marathon</span>
-                        </div>
-                    </div>
-                    <div class="package-features">
-                        <ul>
-                            <li><i data-feather="check"></i> Long term development focus</li>
-                            <li><i data-feather="check"></i> Already have some running experience</li>
-                            <li><i data-feather="check"></i> Video calls</li>
-                            <li><i data-feather="check"></i> Performance improvement plans</li>
-                            <li><i data-feather="check"></i> Structured strength training regime</li>
-                        </ul>
-                    </div>
-                    <button class="package-btn">Get Started</button>
-                </div>
-                
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-name">Advanced</h3>
-                        <div class="package-price">
-                            <span class="price">$0</span>
-                            <span class="period">/month</span>
-                        </div>
-                    </div>
-                    <div class="package-distances">
-                        <p class="distance-label">All distances + elite performance</p>
-                    </div>
-                    <div class="package-features">
-                        <ul>
-                            <li><i data-feather="check"></i> Advanced training for experienced runners</li>
-                            <li><i data-feather="check"></i> Video calls</li>
-                            <li><i data-feather="check"></i> Detailed strength training program</li>
-                            <li><i data-feather="check"></i> Recovery protocols</li>
-                            <li><i data-feather="check"></i> Elite performance optimization</li>
-                        </ul>
-                    </div>
-                    <button class="package-btn">Get Started</button>
-                </div>
-            </div>
-        </div>
-    </section>
+.step-description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">How It Works: Your Path to Success</h2>
-                <p class="section-subtitle">Our proven 4-step process to transform your running performance</p>
-            </div>
-            
-            <div class="process-steps">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i data-feather="edit-3"></i>
-                        </div>
-                        <h3 class="step-title">Tell Us About Yourself</h3>
-                        <p class="step-description">Every runner has unique strengths and areas for improvement. Share your running history, goals, and any challenges you've faced so we can create the perfect training blueprint for you.</p>
-                    </div>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i data-feather="phone-call"></i>
-                        </div>
-                        <h3 class="step-title">Connect & Choose Your Package</h3>
-                        <p class="step-description">We'll reach out through your preferred contact method to discuss your goals and help you select the coaching package that best fits your needs and schedule. Then complete our simple registration process.</p>
-                    </div>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i data-feather="tool"></i>
-                        </div>
-                        <h3 class="step-title">Custom Training Design</h3>
-                        <p class="step-description">Once everything is set up, your dedicated coach will craft your personalized training schedule. This includes running workouts, strength training, and recovery protocols tailored specifically to your goals.</p>
-                    </div>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <div class="step-icon">
-                            <i data-feather="repeat"></i>
-                        </div>
-                        <h3 class="step-title">Train, Progress, Achieve</h3>
-                        <p class="step-description">Start following your custom training plan and watch your progress soar. We continuously adapt and optimize your workouts based on your feedback and performance to ensure steady long-term improvement.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+/* Contact Section */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Start Your Journey Today</h2>
-                <p class="section-subtitle">Tell us about your running background and goals</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Ready to Transform Your Running?</h3>
-                    <p>Our coaches are here to help you achieve your distance running goals. Whether you're a complete beginner or looking to PR, we have the expertise to get you there. Complete this premliminary inquiry form, and then our coaches will reach out to you to set up your first video call.</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i data-feather="mail"></i>
-                            <span>daniel2202he@gmail.com</span>
-                        </div>
-                        <div class="contact-method">
-                            <i data-feather="phone"></i>
-                            <span>(425) 531-2342</span>
-                        </div>
-                        <div class="contact-method">
-                            <i data-feather="clock"></i>
-                            <span>Response within 24 hours</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                    
-                    <input type="hidden" name="access_key" value="b7710edd-cdad-4ddb-b42a-b338bdbc53b0"/>
-                    <input type="hidden" name="subject" value="New Contact Form Submission from Web3Forms" />
-                    <input type="hidden" name="from_name" value="My Website" />
-                    
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="goal">Primary Goal *</label>
-                        <select id="goal" name="goal" required>
-                            <option value="">Select your goal</option>
-                            <option value="5k">Faster 5K</option>
-                            <option value="10k">Faster 10K</option>
-                            <option value="half-marathon">Faster Half Marathon</option>
-                            <option value="marathon">Faster Marathon</option>
-                            <option value="general-fitness">General Fitness</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="experience">Running Experience *</label>
-                        <select id="experience" name="experience" required>
-                            <option value="">Select your experience level</option>
-                            <option value="beginner">Complete Beginner</option>
-                            <option value="some-experience">Some Running Experience</option>
-                            <option value="regular-runner">Regular Runner</option>
-                            <option value="experienced">Experienced Runner</option>
-                            <option value="competitive">Competitive Runner</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="weekly-miles">Current Weekly Mileage</label>
-                        <select id="weekly-miles" name="weekly-miles">
-                            <option value="">Select current mileage</option>
-                            <option value="0">0 miles (not currently running)</option>
-                            <option value="1-10">1-10 miles per week</option>
-                            <option value="11-20">11-20 miles per week</option>
-                            <option value="21-30">21-30 miles per week</option>
-                            <option value="31-40">31-40 miles per week</option>
-                            <option value="40+">40+ miles per week</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="timeline">Desired Timeline</label>
-                        <select id="timeline" name="timeline">
-                            <option value="">Select timeline</option>
-                            <option value="3-months">3 months</option>
-                            <option value="6-months">6 months</option>
-                            <option value="1-year">1 year</option>
-                            <option value="flexible">Flexible</option>
-                        </select>
-                    </div>
+.contact-info h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
 
-                    <div class="form-group">
-                        <label for="injuries">Current Running Personal Best and Dates</label>
-                        <textarea id="pr" name="pr" rows="3" placeholder="Please list your running personal bests and the date it happened on"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="injuries">Previous Injuries or Concerns</label>
-                        <textarea id="injuries" name="injuries" rows="3" placeholder="Please describe any previous running injuries or physical limitations"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Additional Information</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us more about your running history, goals, preffered package, or any questions you have"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <span class="btn-text">Send Inquiry</span>
-                        <span class="btn-loading" style="display: none;">
-                            <i data-feather="loader"></i>
-                        </span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
+.contact-info p {
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="next.png" alt="Next Mile Coaching" class="logo">
-                        <span class="logo-text">Next Mile Coaching</span>
-                    </div>
-                    <p class="footer-description">Based out of Sammamish, Washington, we provide professional distance running coaching by elite high school athletes. Transform your running journey with proven training methods.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Training Packages</h4>
-                    <ul class="footer-links">
-                        <li><a href="#packages">Beginner</a></li>
-                        <li><a href="#packages">Intermediate</a></li>
-                        <li><a href="#packages">Advanced</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#packages">Packages</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <div class="footer-contact">
-                        <p><i data-feather="mail"></i> daniel2202he@gmail.com</p>
-                        <p><i data-feather="phone"></i> (425) 531-2342</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Next Mile Coaching. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
 
-    <!-- Success Modal -->
-    <div id="success-modal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <i data-feather="check-circle"></i>
-                <h3>Message Sent Successfully!</h3>
-            </div>
-            <div class="modal-body">
-                <p>Thank you for your inquiry. One of our coaches will review your information and get back to you within 24 hours.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-btn" onclick="closeModal()">Close</button>
-            </div>
-        </div>
-    </div>
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+    justify-content: center;
+}
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+.contact-method i {
+    color: var(--primary-color);
+    width: 20px;
+    height: 20px;
+}
+
+/* Form Styles */
+.contact-form {
+    background-color: var(--bg-secondary);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem;
+    border: 2px solid var(--gray-300);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submit-btn {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+    background-color: var(--gray-400);
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-loading i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Footer */
+.footer {
+    background-color: var(--bg-dark);
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h4 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.footer-description {
+    color: var(--gray-400);
+    line-height: 1.7;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--gray-400);
+}
+
+.footer-contact i {
+    color: var(--primary-color);
+    width: 16px;
+    height: 16px;
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--gray-700);
+    padding-top: 2rem;
+    text-align: center;
+    color: var(--gray-400);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-header {
+    margin-bottom: 1.5rem;
+}
+
+.modal-header i {
+    color: var(--success-color);
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+    color: var(--text-primary);
+    margin-bottom: 0;
+}
+
+.modal-body p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.modal-footer {
+    margin-top: 2rem;
+}
+
+.modal-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.875rem 2rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Proportional scaling for all devices - maintains exact desktop layout */
+@media (max-width: 1024px) {
+    html {
+        font-size: 16px; /* Larger base font size */
+    }
+    
+    .container {
+        zoom: 0.9; /* Scale down entire container */
+    }
+    
+    .slider_container {
+        height: 36rem; /* Proportionally scale slider height */
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 15px; /* Larger font size for tablets */
+    }
+    
+    .container {
+        zoom: 0.75; /* Scale down more for tablets */
+    }
+    
+    .slider_container {
+        height: 30rem; /* Proportionally scale slider height */
+    }
+    
+    /* Navigation mobile toggle - only structural change needed */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1001;
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+}
+
+@media (max-width: 600px) {
+    html {
+        font-size: 14px; /* Larger font size for phones */
+    }
+    
+    .container {
+        zoom: 0.65; /* Scale down significantly for phones */
+    }
+    
+    .slider_container {
+        height: 26rem; /* Proportionally scale slider height */
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 13px; /* Larger font size for small phones */
+    }
+    
+    .container {
+        zoom: 0.55; /* Scale down more for small phones */
+    }
+    
+    .slider_container {
+        height: 22rem; /* Proportionally scale slider height */
+    }
+}
+
+@media (max-width: 360px) {
+    html {
+        font-size: 12px; /* Larger font size for very small phones */
+    }
+    
+    .container {
+        zoom: 0.5; /* Scale down significantly for very small phones */
+    }
+    
+    .slider_container {
+        height: 20rem; /* Proportionally scale slider height */
+    }
+}
+
+/* Landscape phone orientation */
+@media (max-width: 767px) and (orientation: landscape) {
+    .container {
+        zoom: 0.7; /* Adjust scaling for landscape */
+    }
+    
+    .slider_container {
+        height: 24rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Focus styles for keyboard navigation */
+.btn:focus,
+.nav-link:focus,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --primary-color: #d63000;
+        --secondary-color: #0066cc;
+        --text-primary: #000000;
+        --text-secondary: #333333;
+    }
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .hero-buttons,
+    .contact-form,
+    .footer {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    h1, h2, h3 {
+        page-break-after: avoid;
+    }
+    
+    .program-card,
+    .coach-card,
+    .package-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
