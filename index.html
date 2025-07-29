@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles.css">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/jpg" href="next.png">
+    <link rel="icon" type="image/svg+xml" href="next.png">
 </head>
 <body>
     <!-- Navigation -->
@@ -48,67 +48,51 @@
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">Transform Your Running Journey</h1>
-                <p class="hero-subtitle">Professional coaching from elite high school athletes who understand what it takes to achieve your distance running goals. <br><br> Based out of Sammamish, Washington, we provide professional distance running coaching by elite high school athletes. Transform your running journey with proven training methods.<br><br>Our philosophy? Analyze every runner to find the piece that fits their puzzle through personalized training. We believe that long term consistency is what brings about success so this is our goal to give each and every runner.</p>
-                
+                <p class="hero-subtitle">Professional coaching from elite high school athletes who understand what it takes to achieve your distance running goals. <br><br> Based out of Sammamish, Washington, we provide professional distance running coaching by elite high school athletes. Transform your running journey with proven training methods.<br><br>Our philosophy? Analyze every runner to find the piece that fits their puzzle through personalized training. We believe that long-term development is key to success.</p>
+                <div class="hero-buttons">
+                    <a href="#packages" class="btn btn-primary">View Training Packages</a>
+                    <a href="#contact" class="btn btn-secondary">Start Today</a>
+                </div>
             </div>
             <div class="hero-image">
-                
-                
-                
-                
-                
-            <section class="slider_container">
-                <section class="slider" id="slider">
-                    <div class="slide one active">
-                        <img src="tokyo-modified.png" alt="Tokyo Marathon" />
-                    </div>
-                    <div class="slide two">
-                        <img src="sea-modified.png" alt="Seattle Marathon" />
-                    </div>
-                    <div class="slide three">
-                        <img src="ny-modified.png" alt="New York Marathon" />
-                    </div>
-                    <div class="slide four">
-                        <img src="chi-modified.png" alt="Chicago Marathon" />
+                <section class="slider_container">
+                    <section class="slider" id="slider">
+                        <div class="slide one active">
+                            <img src="tokyo-modified.png" alt="Tokyo Marathon" />
+                        </div>
+                        <div class="slide two">
+                            <img src="sea-modified.png" alt="Seattle Marathon" />
+                        </div>
+                        <div class="slide three">
+                            <img src="ny-modified.png" alt="New York Marathon" />
+                        </div>
+                        <div class="slide four">
+                            <img src="chi-modified.png" alt="Chicago Marathon" />
+                        </div>
+                    </section>
+                    
+                    <!-- Navigation Controls -->
+                    <button class="slider-nav prev" onclick="changeSlide(-1)">
+                        <i data-feather="chevron-left"></i>
+                    </button>
+                    <button class="slider-nav next" onclick="changeSlide(1)">
+                        <i data-feather="chevron-right"></i>
+                    </button>
+                    
+                    <!-- Dots Navigation -->
+                    <div class="slider-dots">
+                        <span class="slider-dot active" onclick="currentSlide(1)"></span>
+                        <span class="slider-dot" onclick="currentSlide(2)"></span>
+                        <span class="slider-dot" onclick="currentSlide(3)"></span>
+                        <span class="slider-dot" onclick="currentSlide(4)"></span>
                     </div>
                 </section>
-                
-                <!-- Navigation Controls -->
-                <button class="slider-nav prev" onclick="changeSlide(-1)">
-                    <i data-feather="chevron-left"></i>
-                </button>
-                <button class="slider-nav next" onclick="changeSlide(1)">
-                    <i data-feather="chevron-right"></i>
-                </button>
-                
-                <!-- Dots Navigation -->
-                <div class="slider-dots">
-                    <span class="slider-dot active" onclick="currentSlide(1)"></span>
-                    <span class="slider-dot" onclick="currentSlide(2)"></span>
-                    <span class="slider-dot" onclick="currentSlide(3)"></span>
-                    <span class="slider-dot" onclick="currentSlide(4)"></span>
-                </div>
-            </section>
-
-
-                
-            
-
-
-
-
-
-
-
-
-        
+            </div>
         </div>
         <div class="hero-background">
             <div class="hero-pattern"></div>
         </div>
     </section>
-
-
 
     <!-- Team Section -->
     <section id="team" class="team">
@@ -121,11 +105,6 @@
             <div class="team-grid">
                 <div class="coach-card">
                     <img src="yash.jpg" alt="Yashas Vanagundi" class="coach-photo">
-                    <div class="coach-avatar">
-                        <div class="avatar-placeholder">
-                            <i data-feather="user"></i>
-                        </div>
-                    </div>
                     <div class="coach-info">
                         <h3 class="coach-name">Yashas Vanagundi</h3>
                         <p class="coach-title">Coach</p>
@@ -160,11 +139,6 @@
                 
                 <div class="coach-card">
                     <img src="dan.jpg" alt="Daniel He" class="coach-photo">
-                    <div class="coach-avatar">
-                        <div class="avatar-placeholder">
-                            <i data-feather="user"></i>
-                        </div>
-                    </div>
                     <div class="coach-info">
                         <h3 class="coach-name">Daniel He</h3>
                         <p class="coach-title">Coach</p>
@@ -195,11 +169,6 @@
                 
                 <div class="coach-card">
                     <img src="finn.jpg" alt="Finn" class="coach-photo">
-                    <div class="coach-avatar">
-                        <div class="avatar-placeholder">
-                            <i data-feather="user"></i>
-                        </div>
-                    </div>
                     <div class="coach-info">
                         <h3 class="coach-name">Finn</h3>
                         <p class="coach-title">Coach</p>
@@ -268,18 +237,19 @@
                             <li><i data-feather="check"></i> Video calls</li>
                             <li><i data-feather="check"></i> Long term development</li>
                             <li><i data-feather="check"></i> Injury prevention focus</li>
-                            <li><i data-feather="check"></i> For newer athletes to the sport</li>
                         </ul>
                     </div>
-                    <button class="package-btn">Get Started</button>
+                    <div class="package-action">
+                        <a href="#contact" class="btn btn-secondary">Start Free Trial</a>
+                    </div>
                 </div>
                 
                 <div class="package-card featured">
-            
+                    <div class="package-badge">Most Popular</div>
                     <div class="package-header">
                         <h3 class="package-name">Intermediate</h3>
                         <div class="package-price">
-                            <span class="price">$0</span>
+                            <span class="price">$75</span>
                             <span class="period">/month</span>
                         </div>
                     </div>
@@ -294,37 +264,49 @@
                     </div>
                     <div class="package-features">
                         <ul>
-                            <li><i data-feather="check"></i> Long term development focus</li>
-                            <li><i data-feather="check"></i> Already have some running experience</li>
-                            <li><i data-feather="check"></i> Video calls</li>
-                            <li><i data-feather="check"></i> Performance improvement plans</li>
-                            <li><i data-feather="check"></i> Structured strength training regime</li>
+                            <li><i data-feather="check"></i> All Beginner features</li>
+                            <li><i data-feather="check"></i> Advanced training plans</li>
+                            <li><i data-feather="check"></i> Nutrition guidance</li>
+                            <li><i data-feather="check"></i> Recovery protocols</li>
+                            <li><i data-feather="check"></i> Race strategy</li>
+                            <li><i data-feather="check"></i> Performance analytics</li>
                         </ul>
                     </div>
-                    <button class="package-btn">Get Started</button>
+                    <div class="package-action">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                    </div>
                 </div>
                 
                 <div class="package-card">
                     <div class="package-header">
                         <h3 class="package-name">Advanced</h3>
                         <div class="package-price">
-                            <span class="price">$0</span>
+                            <span class="price">$150</span>
                             <span class="period">/month</span>
                         </div>
                     </div>
                     <div class="package-distances">
-                        <p class="distance-label">All distances + elite performance</p>
+                        <p class="distance-label">Available for:</p>
+                        <div class="distance-tags">
+                            <span class="distance-tag">5K</span>
+                            <span class="distance-tag">10K</span>
+                            <span class="distance-tag">Half Marathon</span>
+                            <span class="distance-tag">Marathon</span>
+                        </div>
                     </div>
                     <div class="package-features">
                         <ul>
-                            <li><i data-feather="check"></i> Advanced training for experienced runners</li>
-                            <li><i data-feather="check"></i> Video calls</li>
-                            <li><i data-feather="check"></i> Detailed strength training program</li>
-                            <li><i data-feather="check"></i> Recovery protocols</li>
-                            <li><i data-feather="check"></i> Elite performance optimization</li>
+                            <li><i data-feather="check"></i> All Intermediate features</li>
+                            <li><i data-feather="check"></i> 1-on-1 coaching sessions</li>
+                            <li><i data-feather="check"></i> Custom training plans</li>
+                            <li><i data-feather="check"></i> 24/7 support</li>
+                            <li><i data-feather="check"></i> Elite athlete mentorship</li>
+                            <li><i data-feather="check"></i> Competition preparation</li>
                         </ul>
                     </div>
-                    <button class="package-btn">Get Started</button>
+                    <div class="package-action">
+                        <a href="#contact" class="btn btn-secondary">Contact Us</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -332,54 +314,46 @@
 
     <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works">
+        <div class="how-it-works-background">
+            <img src="london.jpg" alt="London Marathon" class="background-image">
+            <div class="background-overlay"></div>
+        </div>
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">How It Works: Your Path to Success</h2>
-                <p class="section-subtitle">Our proven 4-step process to transform your running performance</p>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Your journey to running excellence in four simple steps</p>
             </div>
             
             <div class="process-steps">
                 <div class="step-card">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <div class="step-icon">
-                            <i data-feather="edit-3"></i>
-                        </div>
-                        <h3 class="step-title">Tell Us About Yourself</h3>
-                        <p class="step-description">Every runner has unique strengths and areas for improvement. Share your running history, goals, and any challenges you've faced so we can create the perfect training blueprint for you.</p>
+                        <h3 class="step-title">Assessment</h3>
+                        <p class="step-description">We evaluate your current fitness level, running history, and goals to create a personalized baseline.</p>
                     </div>
                 </div>
                 
                 <div class="step-card">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <div class="step-icon">
-                            <i data-feather="phone-call"></i>
-                        </div>
-                        <h3 class="step-title">Connect & Choose Your Package</h3>
-                        <p class="step-description">We'll reach out through your preferred contact method to discuss your goals and help you select the coaching package that best fits your needs and schedule. Then complete our simple registration process.</p>
+                        <h3 class="step-title">Custom Plan</h3>
+                        <p class="step-description">Receive a tailored training plan designed specifically for your goals, schedule, and fitness level.</p>
                     </div>
                 </div>
                 
                 <div class="step-card">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <div class="step-icon">
-                            <i data-feather="tool"></i>
-                        </div>
-                        <h3 class="step-title">Custom Training Design</h3>
-                        <p class="step-description">Once everything is set up, your dedicated coach will craft your personalized training schedule. This includes running workouts, strength training, and recovery protocols tailored specifically to your goals.</p>
+                        <h3 class="step-title">Training</h3>
+                        <p class="step-description">Follow your structured program with regular check-ins and adjustments from your dedicated coach.</p>
                     </div>
                 </div>
                 
                 <div class="step-card">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <div class="step-icon">
-                            <i data-feather="repeat"></i>
-                        </div>
-                        <h3 class="step-title">Train, Progress, Achieve</h3>
-                        <p class="step-description">Start following your custom training plan and watch your progress soar. We continuously adapt and optimize your workouts based on your feedback and performance to ensure steady long-term improvement.</p>
+                        <h3 class="step-title">Achieve Goals</h3>
+                        <p class="step-description">Cross the finish line with confidence, having achieved your personal running goals.</p>
                     </div>
                 </div>
             </div>
@@ -391,43 +365,53 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Start Your Journey Today</h2>
-                <p class="section-subtitle">Tell us about your running background and goals</p>
-            </div>
-            
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Ready to Transform Your Running?</h3>
-                    <p>Our coaches are here to help you achieve your distance running goals. Whether you're a complete beginner or looking to PR, we have the expertise to get you there. Complete this premliminary inquiry form, and then our coaches will reach out to you to set up your first video call.</p>
+                <p class="section-subtitle">Ready to transform your running? Get in touch with our elite coaches</p>
+                
+                <div class="contact-info-header">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i data-feather="map-pin"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Location</h4>
+                            <p>Sammamish, Washington</p>
+                        </div>
+                    </div>
                     
-                    <div class="contact-methods">
-                        <div class="contact-method">
+                    <div class="info-item">
+                        <div class="info-icon">
                             <i data-feather="mail"></i>
-                            <span>daniel2202he@gmail.com</span>
                         </div>
-                        <div class="contact-method">
-                            <i data-feather="phone"></i>
-                            <span>(425) 531-2342</span>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>coach@nextmilecoaching.com</p>
                         </div>
-                        <div class="contact-method">
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
                             <i data-feather="clock"></i>
-                            <span>Response within 24 hours</span>
+                        </div>
+                        <div class="info-content">
+                            <h4>Response Time</h4>
+                            <p>Within 24 hours</p>
                         </div>
                     </div>
                 </div>
-                
-                <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            </div>
+            
+            <div class="contact-form-container">
+                <form class="contact-form" id="contact-form" action="https://formspree.io/f/mldlnkzb" method="POST">
                     
-                    <input type="hidden" name="access_key" value="b7710edd-cdad-4ddb-b42a-b338bdbc53b0"/>
-                    <input type="hidden" name="subject" value="New Contact Form Submission from Web3Forms" />
-                    <input type="hidden" name="from_name" value="My Website" />
-                    
+
+
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email">Email Address</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     
@@ -436,74 +420,9 @@
                         <input type="tel" id="phone" name="phone">
                     </div>
                     
-                    <div class="form-group">
-                        <label for="goal">Primary Goal *</label>
-                        <select id="goal" name="goal" required>
-                            <option value="">Select your goal</option>
-                            <option value="5k">Faster 5K</option>
-                            <option value="10k">Faster 10K</option>
-                            <option value="half-marathon">Faster Half Marathon</option>
-                            <option value="marathon">Faster Marathon</option>
-                            <option value="general-fitness">General Fitness</option>
-                        </select>
-                    </div>
                     
-                    <div class="form-group">
-                        <label for="experience">Running Experience *</label>
-                        <select id="experience" name="experience" required>
-                            <option value="">Select your experience level</option>
-                            <option value="beginner">Complete Beginner</option>
-                            <option value="some-experience">Some Running Experience</option>
-                            <option value="regular-runner">Regular Runner</option>
-                            <option value="experienced">Experienced Runner</option>
-                            <option value="competitive">Competitive Runner</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="weekly-miles">Current Weekly Mileage</label>
-                        <select id="weekly-miles" name="weekly-miles">
-                            <option value="">Select current mileage</option>
-                            <option value="0">0 miles (not currently running)</option>
-                            <option value="1-10">1-10 miles per week</option>
-                            <option value="11-20">11-20 miles per week</option>
-                            <option value="21-30">21-30 miles per week</option>
-                            <option value="31-40">31-40 miles per week</option>
-                            <option value="40+">40+ miles per week</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="timeline">Desired Timeline</label>
-                        <select id="timeline" name="timeline">
-                            <option value="">Select timeline</option>
-                            <option value="3-months">3 months</option>
-                            <option value="6-months">6 months</option>
-                            <option value="1-year">1 year</option>
-                            <option value="flexible">Flexible</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="injuries">Current Running Personal Best and Dates</label>
-                        <textarea id="pr" name="pr" rows="3" placeholder="Please list your running personal bests and the date it happened on"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="injuries">Previous Injuries or Concerns</label>
-                        <textarea id="injuries" name="injuries" rows="3" placeholder="Please describe any previous running injuries or physical limitations"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Additional Information</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us more about your running history, goals, preffered package, or any questions you have"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-btn">
-                        <span class="btn-text">Send Inquiry</span>
-                        <span class="btn-loading" style="display: none;">
-                            <i data-feather="loader"></i>
-                        </span>
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        Send Message
                     </button>
                 </form>
             </div>
@@ -514,38 +433,19 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
+                <div class="footer-left">
                     <div class="footer-logo">
                         <img src="next.png" alt="Next Mile Coaching" class="logo">
-                        <span class="logo-text">Next Mile Coaching</span>
+                        <span>Next Mile Coaching</span>
                     </div>
-                    <p class="footer-description">Based out of Sammamish, Washington, we provide professional distance running coaching by elite high school athletes. Transform your running journey with proven training methods.</p>
+                    <p class="footer-description">Transform your running journey</p>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Training Packages</h4>
-                    <ul class="footer-links">
-                        <li><a href="#packages">Beginner</a></li>
-                        <li><a href="#packages">Intermediate</a></li>
-                        <li><a href="#packages">Advanced</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="#team">Our Team</a></li>
-                        <li><a href="#packages">Packages</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
+                <div class="footer-right">
                     <div class="footer-contact">
-                        <p><i data-feather="mail"></i> daniel2202he@gmail.com</p>
-                        <p><i data-feather="phone"></i> (425) 531-2342</p>
+                        <p>Sammamish, WA</p>
+                        <p>coach@nextmilecoaching.com</p>
+                        <p>24hr response time</p>
                     </div>
                 </div>
             </div>
@@ -557,17 +457,22 @@
     </footer>
 
     <!-- Success Modal -->
-    <div id="success-modal" class="modal">
+    <div id="success-modal" class="modal" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
-                <i data-feather="check-circle"></i>
                 <h3>Message Sent Successfully!</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i data-feather="x"></i>
+                </button>
             </div>
             <div class="modal-body">
-                <p>Thank you for your inquiry. One of our coaches will review your information and get back to you within 24 hours.</p>
+                <div class="success-icon">
+                    <i data-feather="check-circle"></i>
+                </div>
+                <p>Thank you for your interest in Next Mile Coaching! We'll get back to you within 24 hours to discuss your running goals.</p>
             </div>
             <div class="modal-footer">
-                <button class="modal-btn" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" onclick="closeModal()">Close</button>
             </div>
         </div>
     </div>
