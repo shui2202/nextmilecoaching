@@ -763,6 +763,7 @@ p {
     gap: 2rem;
     margin-top: 3rem;
     justify-items: center;
+    overflow: visible;
 }
 
 .team-grid .coach-card:nth-child(3) {
@@ -879,6 +880,7 @@ p {
     margin-left: auto;
     margin-right: auto;
     justify-items: center;
+    overflow: visible;
 }
 
 .packages-grid .package-card:nth-child(3) {
@@ -1026,7 +1028,7 @@ p {
     padding: var(--section-padding);
     background-color: var(--bg-secondary);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .how-it-works-background {
@@ -1115,6 +1117,7 @@ p {
 .contact {
     padding: var(--section-padding);
     background-color: var(--bg-primary);
+    overflow: visible;
 }
 
 .contact-info-header {
@@ -1481,7 +1484,7 @@ textarea:focus {
     .contact-content {
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
+        overflow: visible;
     }
     
     .nav-container {
